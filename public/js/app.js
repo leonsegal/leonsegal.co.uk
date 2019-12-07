@@ -68905,11 +68905,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _Header__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Header */ "./resources/js/components/Header.js");
+/* harmony import */ var _PageHeader__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./PageHeader */ "./resources/js/components/PageHeader.js");
 /* harmony import */ var _Banner__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Banner */ "./resources/js/components/Banner.js");
-/* harmony import */ var _Heading__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Heading */ "./resources/js/components/Heading.js");
-/* harmony import */ var _Content__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Content */ "./resources/js/components/Content.js");
-/* harmony import */ var _Footer__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Footer */ "./resources/js/components/Footer.js");
+/* harmony import */ var _Content__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Content */ "./resources/js/components/Content.js");
+/* harmony import */ var _PageFooter__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./PageFooter */ "./resources/js/components/PageFooter.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -68935,7 +68934,6 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
-
 var App =
 /*#__PURE__*/
 function (_React$Component) {
@@ -68949,8 +68947,27 @@ function (_React$Component) {
     _this = _possibleConstructorReturn(this, _getPrototypeOf(App).call(this, props));
     _this.state = {
       siteName: 'leonsegal.co.uk',
-      currentPageNumber: 100,
-      pages: ['home', 'about', 'blog', 'contact']
+      pages: [{
+        pageTitle: 'home',
+        pageTagline: 'Welcome',
+        pageNumber: 100,
+        currentPage: true
+      }, {
+        pageTitle: 'about',
+        pageTagline: 'About Leon',
+        pageNumber: 200,
+        currentPage: false
+      }, {
+        pageTitle: 'blog',
+        pageTagline: 'Random musings',
+        pageNumber: 300,
+        currentPage: false
+      }, {
+        pageTitle: 'contact',
+        pageTagline: 'Contact Leon',
+        pageNumber: 400,
+        currentPage: false
+      }]
     };
     return _this;
   }
@@ -68960,14 +68977,12 @@ function (_React$Component) {
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "container"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Header__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        siteName: this.state.siteName,
-        currentPageNumber: this.state.currentPageNumber
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_PageHeader__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        pages: this.state.pages
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Banner__WEBPACK_IMPORTED_MODULE_3__["default"], {
         siteName: this.state.siteName
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Heading__WEBPACK_IMPORTED_MODULE_4__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Content__WEBPACK_IMPORTED_MODULE_5__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Footer__WEBPACK_IMPORTED_MODULE_6__["default"], {
-        pages: this.state.pages,
-        currentPageNumber: this.state.currentPageNumber
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Content__WEBPACK_IMPORTED_MODULE_4__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_PageFooter__WEBPACK_IMPORTED_MODULE_5__["default"], {
+        pages: this.state.pages
       }));
     }
   }]);
@@ -68997,7 +69012,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function Banner(props) {
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, props.siteName);
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+    className: "row display-1"
+  }, props.siteName);
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (Banner);
@@ -69018,17 +69035,19 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function Content(props) {
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "content");
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "row"
+  }, "(content)");
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (Content);
 
 /***/ }),
 
-/***/ "./resources/js/components/Footer.js":
-/*!*******************************************!*\
-  !*** ./resources/js/components/Footer.js ***!
-  \*******************************************/
+/***/ "./resources/js/components/PageFooter.js":
+/*!***********************************************!*\
+  !*** ./resources/js/components/PageFooter.js ***!
+  \***********************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -69038,18 +69057,25 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 
 
-function Footer(props) {
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "footer");
+function PageFooter(props) {
+  var pages = props.pages.map(function (page) {
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+      className: "col-3"
+    }, page.pageTitle, " ", page.pageNumber);
+  });
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "row"
+  }, pages);
 }
 
-/* harmony default export */ __webpack_exports__["default"] = (Footer);
+/* harmony default export */ __webpack_exports__["default"] = (PageFooter);
 
 /***/ }),
 
-/***/ "./resources/js/components/Header.js":
-/*!*******************************************!*\
-  !*** ./resources/js/components/Header.js ***!
-  \*******************************************/
+/***/ "./resources/js/components/PageHeader.js":
+/*!***********************************************!*\
+  !*** ./resources/js/components/PageHeader.js ***!
+  \***********************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -69077,16 +69103,28 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
-function Title(props) {
+function getCurrentPage(pages) {
+  return pages.reduce(function (result, page) {
+    return result || page.currentPage === true;
+  });
+}
+
+function PageTagline(props) {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "col-3"
-  }, props.siteName);
+    className: "col-2"
+  }, props.pageTagline);
 }
 
 function PageNumber(props) {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "col-4"
-  }, props.currentPageNumber);
+    className: "col-2"
+  }, "p", props.pageNumber);
+}
+
+function PageCounter(props) {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "col-2"
+  }, props.pageNumber);
 }
 
 var DateTime =
@@ -69139,38 +69177,20 @@ function (_React$Component) {
   return DateTime;
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
-function Header(props) {
+function PageHeader(props) {
+  var currentPage = getCurrentPage(props.pages);
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "row"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Title, {
-    siteName: props.siteName
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(PageNumber, {
-    currentPageNumber: props.currentPageNumber
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(PageNumber, {
+    pageNumber: currentPage.pageNumber
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(PageTagline, {
+    pageTagline: currentPage.pageTagline
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(PageCounter, {
+    pageNumber: currentPage.pageNumber
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(DateTime, null));
 }
 
-/* harmony default export */ __webpack_exports__["default"] = (Header);
-
-/***/ }),
-
-/***/ "./resources/js/components/Heading.js":
-/*!********************************************!*\
-  !*** ./resources/js/components/Heading.js ***!
-  \********************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-
-
-function Heading(props) {
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "heading");
-}
-
-/* harmony default export */ __webpack_exports__["default"] = (Heading);
+/* harmony default export */ __webpack_exports__["default"] = (PageHeader);
 
 /***/ }),
 

@@ -1,7 +1,7 @@
 import React from 'react';
 
 function Banner(props) {
-	return <div>{props.siteName}</div>
+	return <h1 className="row display-1">{props.siteName}</h1>
 }
 
 export default Banner;
