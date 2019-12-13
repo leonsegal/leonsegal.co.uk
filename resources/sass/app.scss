@@ -1,13 +1,41 @@
 // Fonts
-@import url('https://fonts.googleapis.com/css?family=VT323&display=swap');
-
+@import url('https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap');
 // Variables
 @import 'variables';
-
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
 body {
-  font-family: $font-family-monospace;
+  background-color: black;
+  color: white;
+  font-family: 'Press Start 2P', monospace;
+}
+
+h1 {
+  text-align: center;
+  background-color: #0000ff;
+  color: #ffff00;
+}
+
+h3 {
+  color: #ffff00;
+}
+
+hr {
+  height: 6px;
+  width: 100%;
+  color: #0000ff;
+  background-color: #0000ff;
+  border: 1px solid #0000ff;
+  margin: 20px 0px;
+}
+
+.page-number {
   color: yellow;
+}
+
+@media screen and (max-width: 850px) {
+  #header, #main, #footer {
+    width: 100%;
+  }
 }

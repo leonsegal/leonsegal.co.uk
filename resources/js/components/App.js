@@ -10,6 +10,7 @@ class App extends React.Component {
 		super(props);
 		this.state = {
 			siteName: 'leonsegal.co.uk',
+			pageCounter: 100,
 			pages: [
 				{
 					pageTitle: 'home',

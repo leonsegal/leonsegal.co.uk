@@ -8,25 +8,25 @@ function getCurrentPage(pages) {
 
 function PageTagline(props) {
 	return (
-		<div className="col-2">
+		<small className="col-2 text-center">
 			{props.pageTagline}
-		</div>
+		</small>
 	);
 }
 
 function PageNumber(props) {
 	return (
-		<div className="col-2">
+		<small className="col-2 text-center">
 			p{props.pageNumber}
-		</div>
+		</small>
 	);
 }
 
 function PageCounter(props) {
 	return (
-		<div className="col-2">
+		<small className="col-2 text-center">
 			{props.pageNumber}
-		</div>
+		</small>
 	);
 }
 
@@ -35,6 +35,9 @@ class DateTime extends React.Component {
 		super(props);
 		this.state = {
 			date: new Date(),
+			months: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+			days: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
+			now: new Date(),
 		};
 	}
 
@@ -57,9 +60,13 @@ class DateTime extends React.Component {
 
 	render() {
 		return (
-			<div className="col-3">
-				{this.state.date.toLocaleDateString()} {this.state.date.toLocaleTimeString()}
-			</div>
+			<small className="col-6">
+				{
+					this.state.days[this.state.now.getDay()] + ' '
+					+ this.state.now.getDay() + ' '
+					+ this.state.months[this.state.now.getMonth()]} {this.state.date.toLocaleTimeString()
+				}
+			</small>
 		);
 	}
 }
